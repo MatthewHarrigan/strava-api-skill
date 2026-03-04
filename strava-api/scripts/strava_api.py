@@ -8,6 +8,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 from urllib import parse, request, error
+from typing import Optional, Dict, List
 
 API_BASE = "https://www.strava.com/api/v3"
 OAUTH_URL = "https://www.strava.com/oauth/token"
@@ -70,7 +71,7 @@ def ensure_fresh_token(cfg: StravaConfig) -> None:
         refresh_access_token(cfg)
 
 
-def api_get(cfg: StravaConfig, path: str, query: dict | None = None):
+def api_get(cfg: StravaConfig, path: str, query: Optional[Dict] = None):
     ensure_fresh_token(cfg)
     qs = f"?{parse.urlencode(query)}" if query else ""
     url = f"{API_BASE}{path}{qs}"
@@ -116,7 +117,7 @@ def parse_dt(s: str) -> datetime:
     return datetime.fromisoformat(s.replace("Z", "+00:00"))
 
 
-def filter_activities(items: list[dict], days: int, typ: str | None) -> list[dict]:
+def filter_activities(items: List[Dict], days: int, typ: Optional[str]) -> List[Dict]:
     cutoff = utc_now() - timedelta(days=days)
     out = []
     for a in items:
