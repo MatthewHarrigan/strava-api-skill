@@ -1,0 +1,10 @@
+# Never commit local secrets
+*.json
+!.github/*.json
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
