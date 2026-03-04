@@ -18,7 +18,7 @@ Use this skill to fetch live Strava data without exposing credentials.
 The script reads config from:
 
 1. `STRAVA_CONFIG` env var (if set)
-2. `~/.openclaw/workspace/.strava.json` (default)
+2. `~/.strava.json` (default, recommended)
 
 Expected keys in config (not committed):
 
@@ -27,6 +27,8 @@ Expected keys in config (not committed):
 - `refresh_token`
 - `access_token` (updated automatically)
 - `expires_at` (updated automatically)
+
+See `references/config-and-security.md` for config + safety rules.
 
 ## Commands
 

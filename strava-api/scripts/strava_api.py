@@ -11,7 +11,7 @@ from urllib import parse, request, error
 
 API_BASE = "https://www.strava.com/api/v3"
 OAUTH_URL = "https://www.strava.com/oauth/token"
-DEFAULT_CFG = Path.home() / ".openclaw" / "workspace" / ".strava.json"
+DEFAULT_CFG = Path.home() / ".strava.json"
 
 
 @dataclass
